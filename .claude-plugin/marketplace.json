@@ -1,0 +1,18 @@
+{
+  "name": "web-dev-skills-marketplace",
+  "owner": {
+    "name": "manabout-town"
+  },
+  "description": "Next.js + Supabase 웹 개발을 위한 개발 단계 기준 스킬 모음집",
+  "plugins": [
+    {
+      "name": "web-dev-skills",
+      "source": "./",
+      "description": "Next.js + Supabase 웹 개발을 위한 범용 기술 스킬 모음집 (기획, 디자인, 데이터 모델링, 기능 구현, 페이지 구현, 렌더링, 배포, 마케팅/계측 등 개발 단계별 스킬). 특정 서비스의 비즈니스 로직이 아닌 재사용 가능한 기술 패턴만 다룬다.",
+      "version": "0.1.0",
+      "author": {
+        "name": "manabout-town"
+      }
+    }
+  ]
+}

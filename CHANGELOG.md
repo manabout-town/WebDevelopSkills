@@ -81,3 +81,9 @@
 - 핵심 메커니즘: 기존 프로젝트에 이미 토큰/라이브러리가 있는지 먼저 확인 → UI 프리미티브 라이브러리(shadcn/ui·Radix·순수 Tailwind 등)를 컴포넌트 개수·소유권 선호·접근성 요구 같은 실제 신호로 한 번 결정 → 시맨틱 컬러(success/warning/danger/info) 포함 색상 토큰을 WCAG AA 대비 확인과 함께 결정 → 타이포/spacing/radius/shadow 컨벤션 결정 → `tailwind.config.*`/`globals.css`에 실제로 작성(번들된 템플릿 파일이 아니라 매 프로젝트마다 생성되는 실제 코드라는 점에서 CLAUDE.md 3번 규칙과 충돌하지 않음) → `ux-flow-design`/`page-implementation`에 토큰 참조를 인계.
 - `README.md`의 "단계별 로드맵과 별개인 추가 스킬" 표에 추가.
 - 다음 단계: 사용자 검토 후 테스트 프롬프트 작성 및 평가 진행 여부 결정.
+
+## 2026-06-18 (7) — Claude Code 플러그인 마켓플레이스로 설치 가능하게 전환
+
+- 사용자가 이 리포(`manabout-town/WebDevelopSkills`)를 GitHub에 직접 push 완료 후, Claude Code에서 설치하는 방법을 문의. 단순 스킬 폴더 복사 방식과 정식 플러그인 마켓플레이스 등록 방식 두 가지를 제시했고, 사용자가 마켓플레이스 등록 방식을 선택.
+- `.claude-plugin/marketplace.json` 신규 추가 — 마켓플레이스 이름 `web-dev-skills-marketplace`, owner `manabout-town`, 기존 `.claude-plugin/plugin.json`(이름 `web-dev-skills`, 버전 `0.1.0`)을 `source: "./"`로 가리키는 단일 플러그인 엔트리 등록 (리포 루트를 마켓플레이스 루트로 쓰는 구조라 별도 서브디렉토리 분리 없이 동일 위치 재사용).
+- 설치 명령: `/plugin marketplace add manabout-town/WebDevelopSkills` → `/plugin install web-dev-skills@web-dev-skills-marketplace` → `/reload-plugins`.
