@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Produces a written scope document, not just a conversational answer", "passed": true, "evidence": "Full doc with Problem/Actors/User flow/Touches & dependencies/MVP cut line/Success criteria/Open questions sections, following the skill template exactly."},
+    {"text": "Problem statement frames what the user is trying to do and what currently blocks them, not just a restatement of 'add bookmark feature'", "passed": true, "evidence": "\"저장해둘 방법이 없어 ... 결국 다시 찾지 못하고 잊어버린다\" — names the blocker (no way to save) and the underlying goal."},
+    {"text": "Identifies a single actor explicitly rather than inventing an unnecessary second role", "passed": true, "evidence": "States plainly: \"이 기능은 단일 사용자 유형(독자/로그인 사용자)만 관련된다. 별도의 운영자/관리자 역할은 v1 범위에서 필요하지 않다.\""},
+    {"text": "User flow is written as an ordered numbered sequence of steps, not a list of capabilities", "passed": true, "evidence": "8 numbered steps plus lettered unhappy-path branches (2a, 5a, 6a)."},
+    {"text": "MVP cut line has at least one item placed in 'out of scope (later)' or 'explicitly not doing' rather than putting everything in v1", "passed": true, "evidence": "Out of scope: folders/tags, sort/filter, notifications, sharing. Explicitly not doing: anonymous local bookmarks, quotas, export/import."},
+    {"text": "Success criteria are checkable/measurable statements, not aspirational ones", "passed": true, "evidence": "4 statements like \"동일한 게시물을 두 번 북마크해도 목록에 중복으로 나타나지 않는다\" — each is independently verifiable."},
+    {"text": "Touches & dependencies section names an entry point in the existing product without designing the UI in detail", "passed": true, "evidence": "Names entry points (post list/detail page, new '내 북마크' page) and the `bookmark` entity by name only, no schema or pixel-level UI."},
+    {"text": "Does not add unnecessary complexity (e.g. multi-role permissions) for what the prompt described as a single-user feature", "passed": true, "evidence": "Explicitly scopes out admin/operator role; keeps to a single actor throughout."}
+  ],
+  "summary": {"passed": 8, "failed": 0, "total": 8, "pass_rate": 1.0}
+}

@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "skill_name": "project-structure-convention",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "eval-0-greenfield-setup",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 169.19,
+        "tokens": 70273,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "라우트 그룹이 접근권한((public)/(authenticated)/(admin)) 기준으로만 존재하고, 별도 도메인 그룹(예: (auth))을 만들지 않았는가",
+          "passed": true,
+          "evidence": "app 하위 그룹: ['(admin)', '(authenticated)', '(public)', 'auth'] / 추가 도메인 그룹 없음"
+        },
+        {
+          "text": "lib/supabase에 서비스 롤(service_role) 클라이언트 파일이 포함되어 있는가",
+          "passed": true,
+          "evidence": "service.ts 발견"
+        },
+        {
+          "text": "컴포넌트 파일명이 kebab-case로 일관되는가 (PascalCase 파일명 없음)",
+          "passed": true,
+          "evidence": "전부 kebab-case/lowercase"
+        },
+        {
+          "text": "Server Action을 lib/actions 같은 중앙 폴더로 미리 모아두지 않고 라우트별로 분리했는가",
+          "passed": true,
+          "evidence": "중앙 actions 폴더 없음 (라우트별 분리 유지)"
+        },
+        {
+          "text": "app/, lib/, components/, types/, hooks/ 최상위 구조가 모두 존재하는가",
+          "passed": true,
+          "evidence": "{\"app\": true, \"lib\": true, \"components\": true, \"types\": true, \"hooks\": true}"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "eval-0-greenfield-setup",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.2,
+        "passed": 1,
+        "failed": 4,
+        "total": 5,
+        "time_seconds": 160.64,
+        "tokens": 72599,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "라우트 그룹이 접근권한((public)/(authenticated)/(admin)) 기준으로만 존재하고, 별도 도메인 그룹(예: (auth))을 만들지 않았는가",
+          "passed": false,
+          "evidence": "app 하위 그룹: ['(admin)', '(auth)', '(dashboard)', '(public)', 'api'] / 추가 도메인 그룹 발견: ['(auth)', '(dashboard)']"
+        },
+        {
+          "text": "lib/supabase에 서비스 롤(service_role) 클라이언트 파일이 포함되어 있는가",
+          "passed": false,
+          "evidence": "service.ts 없음 — service_role 클라이언트 누락"
+        },
+        {
+          "text": "컴포넌트 파일명이 kebab-case로 일관되는가 (PascalCase 파일명 없음)",
+          "passed": false,
+          "evidence": "PascalCase 파일 발견: ['src/components/layout/SiteHeader.tsx']"
+        },
+        {
+          "text": "Server Action을 lib/actions 같은 중앙 폴더로 미리 모아두지 않고 라우트별로 분리했는가",
+          "passed": true,
+          "evidence": "중앙 actions 폴더 없음 (라우트별 분리 유지)"
+        },
+        {
+          "text": "app/, lib/, components/, types/, hooks/ 최상위 구조가 모두 존재하는가",
+          "passed": false,
+          "evidence": "{\"app\": true, \"lib\": true, \"components\": true, \"types\": true, \"hooks\": false}"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "eval-1-add-feature",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 83.33,
+        "tokens": 62018,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "새 폼 컴포넌트를 dashboard 라우트 폴더에 colocate했는가 (조기에 components/ 하위 전용 폴더로 옮기지 않았는가)",
+          "passed": true,
+          "evidence": "post-form.tsx 위치: ['app/(authenticated)/dashboard/post-form.tsx']"
+        },
+        {
+          "text": "Server Action 내부에서 인증을 재확인하는가 (auth.getUser() 호출)",
+          "passed": true,
+          "evidence": "actions.ts에서 getUser() 호출 확인"
+        },
+        {
+          "text": "기존 lib/supabase 클라이언트 구성을 그대로 재사용했는가 (새 클라이언트 파일을 따로 만들지 않았는가)",
+          "passed": true,
+          "evidence": "발견된 supabase client 파일: ['client.ts', 'server.ts']"
+        },
+        {
+          "text": "새로 추가한 파일명이 kebab-case인가",
+          "passed": true,
+          "evidence": "전부 kebab-case"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "eval-1-add-feature",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 125.79,
+        "tokens": 63402,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "새 폼 컴포넌트를 dashboard 라우트 폴더에 colocate했는가 (조기에 components/ 하위 전용 폴더로 옮기지 않았는가)",
+          "passed": false,
+          "evidence": "post-form.tsx 위치: ['components/dashboard/post-form.tsx']"
+        },
+        {
+          "text": "Server Action 내부에서 인증을 재확인하는가 (auth.getUser() 호출)",
+          "passed": true,
+          "evidence": "actions.ts에서 getUser() 호출 확인"
+        },
+        {
+          "text": "기존 lib/supabase 클라이언트 구성을 그대로 재사용했는가 (새 클라이언트 파일을 따로 만들지 않았는가)",
+          "passed": true,
+          "evidence": "발견된 supabase client 파일: ['client.ts', 'server.ts']"
+        },
+        {
+          "text": "새로 추가한 파일명이 kebab-case인가",
+          "passed": true,
+          "evidence": "전부 kebab-case"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "eval-2-refactor-messy",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 62.94,
+        "tokens": 61213,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "라우트 전용 컴포넌트(admin-user-row, post-card)가 각자 쓰이는 라우트 폴더 안으로 옮겨졌는가 (중앙 components/ 하위의 도메인 폴더가 아니라)",
+          "passed": true,
+          "evidence": "{\"admin-user-row.tsx\": \"app/(admin)/users/_components/admin-user-row.tsx\", \"post-card.tsx\": \"app/(authenticated)/posts/_components/post-card.tsx\"}"
+        },
+        {
+          "text": "범용 UI 프리미티브(button)가 components/ui/로 이동했는가",
+          "passed": true,
+          "evidence": "button.tsx 위치: components/ui/button.tsx"
+        },
+        {
+          "text": "이동한 컴포넌트를 가리키는 import 경로가 모두 갱신되어 깨진 import가 없는가",
+          "passed": true,
+          "evidence": "모든 import 경로 갱신됨"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "eval-2-refactor-messy",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6667,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 72.59,
+        "tokens": 58642,
+        "tool_calls": null,
+        "errors": []
+      },
+      "expectations": [
+        {
+          "text": "라우트 전용 컴포넌트(admin-user-row, post-card)가 각자 쓰이는 라우트 폴더 안으로 옮겨졌는가 (중앙 components/ 하위의 도메인 폴더가 아니라)",
+          "passed": false,
+          "evidence": "{\"post-card.tsx\": \"components/posts/post-card.tsx\", \"admin-user-row.tsx\": \"components/admin/admin-user-row.tsx\"}"
+        },
+        {
+          "text": "범용 UI 프리미티브(button)가 components/ui/로 이동했는가",
+          "passed": true,
+          "evidence": "button.tsx 위치: components/ui/button.tsx"
+        },
+        {
+          "text": "이동한 컴포넌트를 가리키는 import 경로가 모두 갱신되어 깨진 import가 없는가",
+          "passed": true,
+          "evidence": "모든 import 경로 갱신됨"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 105.1533,
+        "stddev": 46.0395,
+        "min": 62.94,
+        "max": 169.19
+      },
+      "tokens": {
+        "mean": 64501.3333,
+        "stddev": 4094.3952,
+        "min": 61213,
+        "max": 70273
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5389,
+        "stddev": 0.242,
+        "min": 0.2,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 119.6733,
+        "stddev": 36.2055,
+        "min": 72.59,
+        "max": 160.64
+      },
+      "tokens": {
+        "mean": 64881,
+        "stddev": 5793.1018,
+        "min": 58642,
+        "max": 72599
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.4611",
+      "time_seconds": "-14.52",
+      "tokens": "-379.6667"
+    }
+  },
+  "notes": [
+    "eval-0(그린필드): without_skill은 (auth), (dashboard) 같은 도메인/페이지 이름 라우트 그룹을 만들어 스킬이 가르치는 '접근권한 기준 분리' 원칙을 따르지 않음. with_skill은 (public)/(authenticated)/(admin) 세 그룹만 사용.",
+    "eval-0: without_skill은 service_role 클라이언트(service.ts)를 빠뜻려 nextjs-supabase-auth 스킬과의 합이 깨짐 — 두 스킬을 같은 프로젝트에 적용할 때 불일치 발생 가능.",
+    "eval-0: without_skill에 SiteHeader.tsx(PascalCase) 파일명이 등장 — 스킬이 명시한 kebab-case 네이밍 규칙 위반.",
+    "eval-1(기능 추가): 핵심 차이는 새 폼 컴포넌트의 위치. with_skill은 dashboard 라우트 폴더에 colocate, without_skill은 components/dashboard/라는 새 중앙 폴더를 미리 만듦 — 스킬이 경고하는 '재사용되기 전에 미리 옮기기' 패턴.",
+    "eval-1: 인증 재검증(getUser)과 기존 supabase 클라이언트 재사용은 둘 다 잘함 — 이 두 체크는 변별력이 낮음(이미 존재하던 코드라 자연스럽게 유지됨).",
+    "eval-2(리팩터링): with_skill은 라우트 폴더 안 _components/로 colocate, without_skill은 components/admin/, components/posts/ 라는 중앙 폴더의 하위 도메인 폴더로 이동 — 둘 다 '정리'는 했지만 스킬이 가르치는 구체적 컨벤션(라우트 옆 colocate)을 따른 건 with_skill뿐.",
+    "eval-2: import 경로 갱신과 button.tsx → components/ui/ 이동은 둘 다 성공 — 이 두 체크도 변별력이 낮음(비교적 기계적인 작업이라 스킬 유무와 무관하게 잘 수행됨).",
+    "전체적으로 스킬은 '구조가 있는가'보다 '어떤 구체적 컨벤션을 따르는가'에서 차이를 만든다 — without_skill도 합리적인 구조를 만들지만, 매번 다른 네이밍/그룹핑 선택을 해 프로젝트 간 일관성이 떨어진다."
+  ]
+}

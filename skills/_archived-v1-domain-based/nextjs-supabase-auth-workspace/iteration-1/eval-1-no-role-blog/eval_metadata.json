@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "no-role-blog",
+  "prompt": "간단한 개인 블로그 SaaS를 만들고 있는데 로그인한 사용자만 글쓰기 페이지에 접근할 수 있게 미들웨어로 막고 싶어. 역할 같은 건 없고 그냥 로그인 여부만 체크하면 돼.",
+  "assertions": [
+    "Middleware checks login status only — no role/profile lookup logic",
+    "No onboarding or role-selection page is created (0-role case kept simple)",
+    "Post-creation Server Action re-validates auth server-side (defense in depth beyond middleware)",
+    "RLS is enabled on the posts table",
+    "Logout happens server-side via supabase.auth.signOut(), not client-only"
+  ]
+}

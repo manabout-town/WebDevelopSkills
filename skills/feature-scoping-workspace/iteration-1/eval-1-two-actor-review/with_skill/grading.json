@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Produces a written scope document", "passed": true, "evidence": "Full document with all template sections (Problem, Actors, User flow (v1), Touches & dependencies, MVP cut line, Success criteria, Open questions)."},
+    {"text": "Uses the generic role names given in the prompt (provider/requester) consistently rather than inventing domain-specific names", "passed": true, "evidence": "Uses 'Provider'/'Requester' throughout, never substitutes domain-specific names like shipper/driver."},
+    {"text": "Problem statement frames the actors' goals/blockers, not just 'add a review feature'", "passed": true, "evidence": "Frames the lack of trust signal for both sides: requester has no basis to judge a provider, provider has no way to flag unreliable requesters."},
+    {"text": "User flow includes at least one unhappy path (e.g. no-show, one-sided review, no response within a window)", "passed": true, "evidence": "Branches 5a (one-sided submission past deadline), 6a (cancelled/no-show bookings excluded), 6b (deadline passed)."},
+    {"text": "Touches & dependencies section names the new data entity (review/rating) and any dependent existing system (e.g. notifications) without producing full column-level schema", "passed": true, "evidence": "Names `review` entity only, lists booking system + notification system as dependencies, no columns/types given."},
+    {"text": "MVP cut line defers at least one plausible feature (e.g. photo attachments, replies to reviews, edit window) to 'later' or 'explicitly not doing'", "passed": true, "evidence": "Defers replies, report/dispute flow, rating-based sort/filter, edit/delete, and photo attachments to 'later'."},
+    {"text": "Success criteria are checkable/measurable statements", "passed": true, "evidence": "4 checkable statements, e.g. \"취소/노쇼로 끝난 예약에는 리뷰 작성 진입점이 생성되지 않는다.\""},
+    {"text": "Does not leak domain-specific terms from unrelated reference projects (e.g. shipper/driver, bidding, dispatch)", "passed": true, "evidence": "No such terms appear anywhere in the document."}
+  ],
+  "summary": {"passed": 8, "failed": 0, "total": 8, "pass_rate": 1.0}
+}

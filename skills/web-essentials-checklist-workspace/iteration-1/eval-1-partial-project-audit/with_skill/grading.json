@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Leaves the existing working login/signup/logout Server Actions intact (does not rewrite the core auth logic) and reports them as already present rather than redoing them",
+      "passed": true,
+      "evidence": "core auth calls preserved=True, SUMMARY mentions already-present auth=True"
+    },
+    {
+      "text": "Leaves existing page metadata (title/description) intact rather than replacing it with something generic",
+      "passed": true,
+      "evidence": "original title/brand string retained in layout.tsx=True"
+    },
+    {
+      "text": "Adds app/robots.ts and app/sitemap.ts",
+      "passed": true,
+      "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+    },
+    {
+      "text": "Adds error/404/loading pages",
+      "passed": true,
+      "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+    },
+    {
+      "text": "Adds security headers via next.config.ts",
+      "passed": true,
+      "evidence": "headers() with security header names present=True"
+    },
+    {
+      "text": "Adds env var validation",
+      "passed": true,
+      "evidence": "lib/env.ts present=True"
+    },
+    {
+      "text": "Adds favicon/manifest",
+      "passed": true,
+      "evidence": "icon=app/favicon.ico, manifest=app/manifest.ts"
+    },
+    {
+      "text": "SUMMARY.md clearly distinguishes already-present items from newly-added items",
+      "passed": true,
+      "evidence": "SUMMARY.md length=3686, contains distinguishing language=True"
+    }
+  ]
+}

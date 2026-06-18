@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Produces a written scope document", "passed": true, "evidence": "Produces a structured, headed document (questions to resolve, MVP scope with In/Out, data model, edge cases, work order) — not a bare conversational reply."},
+    {"text": "Uses the generic role names given in the prompt (provider/requester) consistently rather than inventing domain-specific names", "passed": true, "evidence": "Uses provider/requester consistently throughout."},
+    {"text": "Problem statement frames the actors' goals/blockers, not just 'add a review feature'", "passed": false, "evidence": "No explicit problem statement; opens directly with '먼저 확정해야 할 핵심 질문들' (design questions to resolve) rather than naming what's broken/missing for either actor."},
+    {"text": "User flow includes at least one unhappy path (e.g. no-show, one-sided review, no response within a window)", "passed": true, "evidence": "Edge-case checklist covers no-show/cancelled bookings, expired review windows, and deleted users."},
+    {"text": "Touches & dependencies section names the new data entity (review/rating) and any dependent existing system (e.g. notifications) without producing full column-level schema", "passed": false, "evidence": "Produces a full column-level `Review` table definition (id, booking_id, author_id, author_role, target_id, rating, comment, status, created_at, published_at, edited_at) — well past entity-name-only."},
+    {"text": "MVP cut line defers at least one plausible feature (e.g. photo attachments, replies to reviews, edit window) to 'later' or 'explicitly not doing'", "passed": true, "evidence": "Explicit '제외 (Out of Scope, 2차 이후로 명시적으로 미룸)' list: replies, upvotes, photo/video attachments, multi-axis ratings, AI abuse filtering, incentives."},
+    {"text": "Success criteria are checkable/measurable statements", "passed": false, "evidence": "No dedicated success-criteria section; the document ends with a suggested build order instead."},
+    {"text": "Does not leak domain-specific terms from unrelated reference projects (e.g. shipper/driver, bidding, dispatch)", "passed": true, "evidence": "No such terms appear; stays within provider/requester/booking vocabulary."}
+  ],
+  "summary": {"passed": 5, "failed": 3, "total": 8, "pass_rate": 0.625}
+}

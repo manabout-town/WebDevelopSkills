@@ -1,0 +1,53 @@
+{
+  "skill_name": "feature-scoping",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "single-actor-bookmark",
+      "prompt": "블로그 서비스에 사용자가 게시물을 북마크할 수 있는 기능을 추가하고 싶어. 일단 어떻게 만들면 될지 생각 좀 정리해줄래?",
+      "expected_output": "단일 액터(사용자) 기준 스코핑 문서. 문제 정의, 유저 플로우(북마크 추가/제거/목록 보기), Touches & dependencies(진입점/새 데이터 엔티티 이름만), MVP 컷라인(예: 폴더별 정리 기능은 later, 공유 기능은 not doing), 체크 가능한 성공 기준이 담긴 스펙 문서.",
+      "files": [],
+      "assertions": [
+        "Produces a written scope document, not just a conversational answer",
+        "Problem statement frames what the user is trying to do and what currently blocks them, not just a restatement of 'add bookmark feature'",
+        "Identifies a single actor explicitly rather than inventing an unnecessary second role",
+        "User flow is written as an ordered numbered sequence of steps, not a list of capabilities",
+        "MVP cut line has at least one item placed in 'out of scope (later)' or 'explicitly not doing' rather than putting everything in v1",
+        "Success criteria are checkable/measurable statements, not aspirational ones",
+        "Touches & dependencies section names an entry point in the existing product without designing the UI in detail",
+        "Does not add unnecessary complexity (e.g. multi-role permissions) for what the prompt described as a single-user feature"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "two-actor-review",
+      "prompt": "예약을 받는 쪽(provider)과 예약하는 쪽(requester)이 있는 서비스를 만들고 있는데, 예약이 끝난 뒤 서로 리뷰를 남길 수 있는 기능을 추가하려고 해. 스코프 좀 잡아줘.",
+      "expected_output": "두 액터(provider/requester) 모두를 generic하게 다루는 스코핑 문서. noshow, 한쪽만 리뷰 남기는 경우 같은 비정상 흐름 일부 포함. Touches & dependencies에 review/rating 엔티티와 알림 등 의존 시스템 명시(스키마 설계는 안 함). MVP 컷라인에서 별점만 v1으로 두고 사진첨부/리뷰에 답글 같은 건 later로 미루는 등 명확한 컷. 성공 기준이 체크 가능한 형태.",
+      "files": [],
+      "assertions": [
+        "Produces a written scope document",
+        "Uses the generic role names given in the prompt (provider/requester) consistently rather than inventing domain-specific names",
+        "Problem statement frames the actors' goals/blockers, not just 'add a review feature'",
+        "User flow includes at least one unhappy path (e.g. no-show, one-sided review, no response within a window)",
+        "Touches & dependencies section names the new data entity (review/rating) and any dependent existing system (e.g. notifications) without producing full column-level schema",
+        "MVP cut line defers at least one plausible feature (e.g. photo attachments, replies to reviews, edit window) to 'later' or 'explicitly not doing'",
+        "Success criteria are checkable/measurable statements",
+        "Does not leak domain-specific terms from unrelated reference projects (e.g. shipper/driver, bidding, dispatch)"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "skip-to-schema",
+      "prompt": "새 기능 만들어야 하는데 일단 스키마부터 설계해줘. provider가 받은 평점을 저장하는 ratings 테이블이랑 reviews 테이블 컬럼 정의해줘.",
+      "expected_output": "바로 테이블 설계로 들어가지 않고, 먼저 이 기능이 어떤 문제를 풀려는 건지·플로우가 뭔지·MVP 범위가 뭔지를 짧게 확인하거나 스코핑 문서를 먼저 작성한 뒤에 (필요하다면) 그 바탕으로 스키마 방향을 제안. 사용자가 바로 다음 단계(데이터 모델링)로 건너뛰려는 신호를 알아채고 스코핑부터 짚어주는지가 핵심.",
+      "files": [],
+      "assertions": [
+        "Does not immediately produce a final column-level ratings/reviews table schema without first addressing scope",
+        "Surfaces or drafts the problem statement and user flow before or instead of jumping straight to schema",
+        "If data entities are mentioned, they are named at the 'Touches & dependencies' level (entity names only) rather than full schema with columns and types",
+        "Explicitly notes that detailed schema design belongs to a later stage (data-model-design) rather than silently doing it anyway",
+        "Produces or proposes a scope document following the skill's template structure"
+      ]
+    }
+  ]
+}

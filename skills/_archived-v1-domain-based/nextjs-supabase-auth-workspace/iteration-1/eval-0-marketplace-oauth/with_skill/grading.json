@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Creates all four separate Supabase clients (browser, server, middleware, service-role)",
+      "passed": true,
+      "evidence": "client/server/middleware/service files found: {'^client\\\\.ts$': ['lib/supabase/client.ts'], '^server\\\\.ts$': ['lib/supabase/server.ts'], '^middleware\\\\.ts$': ['middleware.ts', 'lib/supabase/middleware.ts'], '^service\\\\.ts$': ['lib/supabase/service.ts']}"
+    },
+    {
+      "text": "Auth callback route uses exchangeCodeForSession for the Google OAuth flow",
+      "passed": true,
+      "evidence": "found in: ['app/auth/callback/route.ts']"
+    },
+    {
+      "text": "Middleware returns the mutated response (cookie-sync preserved), not a fresh NextResponse",
+      "passed": true,
+      "evidence": "files with request+response cookie sync: ['lib/supabase/middleware.ts']"
+    },
+    {
+      "text": "Includes RLS policy SQL (ROW LEVEL SECURITY) for the role-scoped tables",
+      "passed": true,
+      "evidence": "found in: ['sql/schema.sql']"
+    },
+    {
+      "text": "Signup is role-agnostic; role is chosen in a separate onboarding step, not at signup",
+      "passed": true,
+      "evidence": "onboarding path exists: True; signup .ts files assigning a role value: []"
+    },
+    {
+      "text": "No 화물로-specific terms (화주, 기사) anywhere in generated code files (excluding SUMMARY.md commentary)",
+      "passed": true,
+      "evidence": "matches outside SUMMARY.md: []"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": 220.0,
+    "total_duration_seconds": 220.0
+  }
+}

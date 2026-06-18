@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Adds real page metadata (title + description) to app/layout.tsx instead of leaving it blank, with a non-placeholder description",
+      "passed": true,
+      "evidence": "layout.tsx metadata export present=True, has substantive description=True"
+    },
+    {
+      "text": "Adds app/robots.ts and app/sitemap.ts",
+      "passed": true,
+      "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+    },
+    {
+      "text": "Adds error.tsx, not-found.tsx, and at least one loading.tsx",
+      "passed": true,
+      "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+    },
+    {
+      "text": "Adds security headers via next.config.ts headers()",
+      "passed": true,
+      "evidence": "next.config.ts contains headers()+security header names: True"
+    },
+    {
+      "text": "Adds env var validation (e.g. lib/env.ts) for Supabase env vars",
+      "passed": true,
+      "evidence": "lib/env.ts present=True"
+    },
+    {
+      "text": "Adds rate limiting on auth actions",
+      "passed": true,
+      "evidence": "rate-limit call found in app/login/actions.ts: True"
+    },
+    {
+      "text": "Adds favicon/icon and a web app manifest",
+      "passed": true,
+      "evidence": "icon=app/favicon.ico, manifest=app/manifest.ts"
+    },
+    {
+      "text": "Implements working login, signup, and logout via Supabase Auth Server Actions",
+      "passed": true,
+      "evidence": "login+signup in actions=True, logout present=True"
+    },
+    {
+      "text": "Writes a clear SUMMARY.md explaining what was found and added",
+      "passed": true,
+      "evidence": "SUMMARY.md length=7194 chars"
+    }
+  ]
+}

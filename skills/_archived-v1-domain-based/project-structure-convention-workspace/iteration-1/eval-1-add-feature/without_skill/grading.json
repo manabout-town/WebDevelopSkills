@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "새 폼 컴포넌트를 dashboard 라우트 폴더에 colocate했는가 (조기에 components/ 하위 전용 폴더로 옮기지 않았는가)",
+      "passed": false,
+      "evidence": "post-form.tsx 위치: ['components/dashboard/post-form.tsx']"
+    },
+    {
+      "text": "Server Action 내부에서 인증을 재확인하는가 (auth.getUser() 호출)",
+      "passed": true,
+      "evidence": "actions.ts에서 getUser() 호출 확인"
+    },
+    {
+      "text": "기존 lib/supabase 클라이언트 구성을 그대로 재사용했는가 (새 클라이언트 파일을 따로 만들지 않았는가)",
+      "passed": true,
+      "evidence": "발견된 supabase client 파일: ['client.ts', 'server.ts']"
+    },
+    {
+      "text": "새로 추가한 파일명이 kebab-case인가",
+      "passed": true,
+      "evidence": "전부 kebab-case"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "timing": {
+    "total_tokens": 63402,
+    "duration_ms": 125792,
+    "total_duration_seconds": 125.79
+  }
+}

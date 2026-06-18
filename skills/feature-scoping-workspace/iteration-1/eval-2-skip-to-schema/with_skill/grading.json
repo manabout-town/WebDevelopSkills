@@ -1,0 +1,10 @@
+{
+  "expectations": [
+    {"text": "Does not immediately produce a final column-level ratings/reviews table schema without first addressing scope", "passed": true, "evidence": "Opens with '스키마부터 가시죠 — 그런데 그 전에 잠깐만요' and gives no column definitions anywhere in the response."},
+    {"text": "Surfaces or drafts the problem statement and user flow before or instead of jumping straight to schema", "passed": true, "evidence": "Asks for the problem first ('평점/리뷰가 해결하려는 진짜 문제가 뭔가요?'), then drafts a full Problem/User flow section in the scope doc."},
+    {"text": "If data entities are mentioned, they are named at the 'Touches & dependencies' level (entity names only) rather than full schema with columns and types", "passed": true, "evidence": "'New data implied (names only, no schema): rating, review 엔티티' — no columns or types given."},
+    {"text": "Explicitly notes that detailed schema design belongs to a later stage (data-model-design) rather than silently doing it anyway", "passed": true, "evidence": "Closing line: '그 다음에 ratings/reviews 테이블 컬럼 정의(data-model-design 단계)로 자연스럽게 넘어가겠습니다.'"},
+    {"text": "Produces or proposes a scope document following the skill's template structure", "passed": true, "evidence": "Full draft scope doc with all template sections, explicitly labeled '(초안, 확인 필요)' with assumptions flagged in each section."}
+  ],
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+}

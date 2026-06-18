@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "Auth callback route exists and uses exchangeCodeForSession",
+      "passed": true,
+      "evidence": "found in: ['app/auth/callback/route.ts']"
+    },
+    {
+      "text": "Server-side logout via signOut() inside a Server Action exists",
+      "passed": true,
+      "evidence": "found in: ['app/logout/actions.ts']"
+    },
+    {
+      "text": "Password reset uses resetPasswordForEmail plus a distinct update-password step gated by a valid recovery session",
+      "passed": true,
+      "evidence": "resetPasswordForEmail in: ['SUMMARY.md', 'app/reset-password/actions.ts']; update-password path exists: True"
+    },
+    {
+      "text": "Middleware syncs refreshed cookies onto both request and response",
+      "passed": true,
+      "evidence": "found in: ['lib/supabase/middleware.ts']"
+    },
+    {
+      "text": "Existing email/password login is preserved alongside the new magic-link option",
+      "passed": true,
+      "evidence": "signInWithPassword in: ['SUMMARY.md', 'app/login/actions.ts', 'app/login/page.tsx']; signInWithOtp in: ['SUMMARY.md', 'app/login/actions.ts']"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": 229.8,
+    "total_duration_seconds": 229.8
+  }
+}

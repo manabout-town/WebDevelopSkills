@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "leaked-secret-and-missing-security",
+  "prompt": "배포 전에 보안이랑 필수 기능들 점검해줘. scripts/final_deploy.command 도 한번 봐줘.",
+  "assertions": [
+    "Explicitly warns that the discovered SUPABASE_SERVICE_ROLE_KEY and TOSS_SECRET_KEY are likely compromised and must be rotated, not just silently removed from the file",
+    "Removes the plaintext secret values from scripts/final_deploy.command and SETUP.md",
+    "Still completes the broader essentials checklist (robots/sitemap, error/404/loading pages, login/logout, env validation, rate limiting) rather than stopping at the security fix alone",
+    "Adds security headers via next.config.ts",
+    "Adds .env.example and .gitignore"
+  ]
+}

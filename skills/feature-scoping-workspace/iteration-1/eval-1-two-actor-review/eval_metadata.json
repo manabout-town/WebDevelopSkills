@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "two-actor-review",
+  "prompt": "예약을 받는 쪽(provider)과 예약하는 쪽(requester)이 있는 서비스를 만들고 있는데, 예약이 끝난 뒤 서로 리뷰를 남길 수 있는 기능을 추가하려고 해. 스코프 좀 잡아줘.",
+  "assertions": [
+    "Produces a written scope document",
+    "Uses the generic role names given in the prompt (provider/requester) consistently rather than inventing domain-specific names",
+    "Problem statement frames the actors' goals/blockers, not just 'add a review feature'",
+    "User flow includes at least one unhappy path (e.g. no-show, one-sided review, no response within a window)",
+    "Touches & dependencies section names the new data entity (review/rating) and any dependent existing system (e.g. notifications) without producing full column-level schema",
+    "MVP cut line defers at least one plausible feature (e.g. photo attachments, replies to reviews, edit window) to 'later' or 'explicitly not doing'",
+    "Success criteria are checkable/measurable statements",
+    "Does not leak domain-specific terms from unrelated reference projects (e.g. shipper/driver, bidding, dispatch)"
+  ]
+}

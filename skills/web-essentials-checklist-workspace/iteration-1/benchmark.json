@@ -1,0 +1,404 @@
+{
+  "metadata": {
+    "skill_name": "web-essentials-checklist",
+    "skill_path": "/Users/park/Desktop/무제 폴더 3/skills/web-essentials-checklist",
+    "executor_model": "claude-sonnet-4-6",
+    "analyzer_model": "claude-sonnet-4-6",
+    "timestamp": "2026-06-17T16:43:17Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "greenfield-missing-everything",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 750.5,
+        "tokens": 132514,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Adds real page metadata (title + description) to app/layout.tsx instead of leaving it blank, with a non-placeholder description",
+          "passed": true,
+          "evidence": "layout.tsx metadata export present=True, has substantive description=True"
+        },
+        {
+          "text": "Adds app/robots.ts and app/sitemap.ts",
+          "passed": true,
+          "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+        },
+        {
+          "text": "Adds error.tsx, not-found.tsx, and at least one loading.tsx",
+          "passed": true,
+          "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+        },
+        {
+          "text": "Adds security headers via next.config.ts headers()",
+          "passed": true,
+          "evidence": "next.config.ts contains headers()+security header names: True"
+        },
+        {
+          "text": "Adds env var validation (e.g. lib/env.ts) for Supabase env vars",
+          "passed": true,
+          "evidence": "lib/env.ts present=True"
+        },
+        {
+          "text": "Adds rate limiting on auth actions",
+          "passed": true,
+          "evidence": "rate-limit call found in app/login/actions.ts: True"
+        },
+        {
+          "text": "Adds favicon/icon and a web app manifest",
+          "passed": true,
+          "evidence": "icon=app/favicon.ico, manifest=app/manifest.ts"
+        },
+        {
+          "text": "Implements working login, signup, and logout via Supabase Auth Server Actions",
+          "passed": true,
+          "evidence": "login+signup in actions=True, logout present=True"
+        },
+        {
+          "text": "Writes a clear SUMMARY.md explaining what was found and added",
+          "passed": true,
+          "evidence": "SUMMARY.md length=7194 chars"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "greenfield-missing-everything",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 915.8,
+        "tokens": 132529,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Adds real page metadata (title + description) to app/layout.tsx instead of leaving it blank, with a non-placeholder description",
+          "passed": true,
+          "evidence": "layout.tsx metadata export present=True, has substantive description=True"
+        },
+        {
+          "text": "Adds app/robots.ts and app/sitemap.ts",
+          "passed": true,
+          "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+        },
+        {
+          "text": "Adds error.tsx, not-found.tsx, and at least one loading.tsx",
+          "passed": true,
+          "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+        },
+        {
+          "text": "Adds security headers via next.config.ts headers()",
+          "passed": true,
+          "evidence": "next.config.ts contains headers()+security header names: True"
+        },
+        {
+          "text": "Adds env var validation (e.g. lib/env.ts) for Supabase env vars",
+          "passed": true,
+          "evidence": "lib/env.ts present=True"
+        },
+        {
+          "text": "Adds rate limiting on auth actions",
+          "passed": true,
+          "evidence": "rate-limit call found in lib/auth/actions.ts: True"
+        },
+        {
+          "text": "Adds favicon/icon and a web app manifest",
+          "passed": true,
+          "evidence": "icon=app/icon.svg, manifest=app/manifest.ts"
+        },
+        {
+          "text": "Implements working login, signup, and logout via Supabase Auth Server Actions",
+          "passed": true,
+          "evidence": "login+signup in actions=True, logout present=True"
+        },
+        {
+          "text": "Writes a clear SUMMARY.md explaining what was found and added",
+          "passed": true,
+          "evidence": "SUMMARY.md length=9681 chars"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "partial-project-audit",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 256.3,
+        "tokens": 87508,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Leaves the existing working login/signup/logout Server Actions intact (does not rewrite the core auth logic) and reports them as already present rather than redoing them",
+          "passed": true,
+          "evidence": "core auth calls preserved=True, SUMMARY mentions already-present auth=True"
+        },
+        {
+          "text": "Leaves existing page metadata (title/description) intact rather than replacing it with something generic",
+          "passed": true,
+          "evidence": "original title/brand string retained in layout.tsx=True"
+        },
+        {
+          "text": "Adds app/robots.ts and app/sitemap.ts",
+          "passed": true,
+          "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+        },
+        {
+          "text": "Adds error/404/loading pages",
+          "passed": true,
+          "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+        },
+        {
+          "text": "Adds security headers via next.config.ts",
+          "passed": true,
+          "evidence": "headers() with security header names present=True"
+        },
+        {
+          "text": "Adds env var validation",
+          "passed": true,
+          "evidence": "lib/env.ts present=True"
+        },
+        {
+          "text": "Adds favicon/manifest",
+          "passed": true,
+          "evidence": "icon=app/favicon.ico, manifest=app/manifest.ts"
+        },
+        {
+          "text": "SUMMARY.md clearly distinguishes already-present items from newly-added items",
+          "passed": true,
+          "evidence": "SUMMARY.md length=3686, contains distinguishing language=True"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "partial-project-audit",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 455.4,
+        "tokens": 100734,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Leaves the existing working login/signup/logout Server Actions intact (does not rewrite the core auth logic) and reports them as already present rather than redoing them",
+          "passed": true,
+          "evidence": "core auth calls preserved=True, SUMMARY mentions already-present auth=True"
+        },
+        {
+          "text": "Leaves existing page metadata (title/description) intact rather than replacing it with something generic",
+          "passed": true,
+          "evidence": "original title/brand string retained in layout.tsx=True"
+        },
+        {
+          "text": "Adds app/robots.ts and app/sitemap.ts",
+          "passed": true,
+          "evidence": "robots=app/robots.ts, sitemap=app/sitemap.ts"
+        },
+        {
+          "text": "Adds error/404/loading pages",
+          "passed": true,
+          "evidence": "error=app/error.tsx, not-found=app/not-found.tsx, loading=app/loading.tsx"
+        },
+        {
+          "text": "Adds security headers via next.config.ts",
+          "passed": true,
+          "evidence": "headers() with security header names present=True"
+        },
+        {
+          "text": "Adds env var validation",
+          "passed": true,
+          "evidence": "lib/env.ts present=True"
+        },
+        {
+          "text": "Adds favicon/manifest",
+          "passed": true,
+          "evidence": "icon=app/icon.tsx, manifest=app/manifest.ts"
+        },
+        {
+          "text": "SUMMARY.md clearly distinguishes already-present items from newly-added items",
+          "passed": true,
+          "evidence": "SUMMARY.md length=4152, contains distinguishing language=True"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "leaked-secret-and-missing-security",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 259.8,
+        "tokens": 85216,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly warns that the discovered SUPABASE_SERVICE_ROLE_KEY and TOSS_SECRET_KEY are likely compromised and must be rotated, not just silently removed from the file",
+          "passed": true,
+          "evidence": "explicit rotate/compromised language found=True; secret values removed from SETUP.md=True"
+        },
+        {
+          "text": "Removes the plaintext secret values from scripts/final_deploy.command and SETUP.md",
+          "passed": true,
+          "evidence": "secret removed from deploy script=True, from SETUP.md=True"
+        },
+        {
+          "text": "Still completes the broader essentials checklist (robots/sitemap, error/404/loading pages, login/logout, env validation, rate limiting) rather than stopping at the security fix alone",
+          "passed": true,
+          "evidence": "robots=True sitemap=True error=True not-found=True loading=True login=True logout=True env=True rate-limit=True"
+        },
+        {
+          "text": "Adds security headers via next.config.ts",
+          "passed": true,
+          "evidence": "headers() with security header names present=True"
+        },
+        {
+          "text": "Adds .env.example and .gitignore",
+          "passed": true,
+          "evidence": ".env.example=.env.example, .gitignore=.gitignore"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "leaked-secret-and-missing-security",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 165.2,
+        "tokens": 65649,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly warns that the discovered SUPABASE_SERVICE_ROLE_KEY and TOSS_SECRET_KEY are likely compromised and must be rotated, not just silently removed from the file",
+          "passed": true,
+          "evidence": "explicit rotate/compromised language found=True; secret values removed from SETUP.md=True"
+        },
+        {
+          "text": "Removes the plaintext secret values from scripts/final_deploy.command and SETUP.md",
+          "passed": true,
+          "evidence": "secret removed from deploy script=True, from SETUP.md=True"
+        },
+        {
+          "text": "Still completes the broader essentials checklist (robots/sitemap, error/404/loading pages, login/logout, env validation, rate limiting) rather than stopping at the security fix alone",
+          "passed": false,
+          "evidence": "robots=False sitemap=False error=False not-found=False loading=False login=False logout=False env=False rate-limit=False"
+        },
+        {
+          "text": "Adds security headers via next.config.ts",
+          "passed": true,
+          "evidence": "headers() with security header names present=True"
+        },
+        {
+          "text": "Adds .env.example and .gitignore",
+          "passed": true,
+          "evidence": ".env.example=.env.example, .gitignore=.gitignore"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 422.2,
+        "stddev": 284.3215,
+        "min": 256.3,
+        "max": 750.5
+      },
+      "tokens": {
+        "mean": 101746,
+        "stddev": 26670.5021,
+        "min": 85216,
+        "max": 132514
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9333,
+        "stddev": 0.1155,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 512.1333,
+        "stddev": 378.5024,
+        "min": 165.2,
+        "max": 915.8
+      },
+      "tokens": {
+        "mean": 99637.3333,
+        "stddev": 33453.4842,
+        "min": 65649,
+        "max": 132529
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.07",
+      "time_seconds": "-89.9",
+      "tokens": "+2109"
+    }
+  },
+  "notes": [
+    "Eval 2 (leaked-secret-and-missing-security) is the clearest discriminator: without_skill fixed the leaked keys and warned generically about not committing secrets, but did not explicitly say the exposed keys are likely compromised and must be rotated, and it stopped at the security fix without covering the rest of the checklist (no robots/sitemap/error pages/login-logout/env validation/rate limiting). with_skill did both.",
+    "Eval 0 and Eval 1 show both configurations performing similarly well on file-existence checks (both with_skill and without_skill independently arrived at a similar set of Next.js best practices), since a capable model already knows most of these individually. The skill's main value-add shown so far is making the explicit security-rotation warning and the full-checklist coverage reliable rather than incidental.",
+    "without_skill took longer on average in eval 0 (915s vs 750s) for a similar pass rate, suggesting the skill's reference files save some exploration/decision time even when the end result is comparable.",
+    "Sample size is 1 run per configuration per eval (3 evals total) - pass rate stddev of 0 within a config is expected and not meaningful; a larger run count would be needed to assess variance."
+  ]
+}

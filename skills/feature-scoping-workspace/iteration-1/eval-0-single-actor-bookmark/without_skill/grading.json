@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Produces a written scope document, not just a conversational answer", "passed": false, "evidence": "Output is a technical design doc (requirements bullets → SQL schema → REST API table → frontend UX → edge cases → build order), not a scope document — no problem statement, actor list, or MVP cut-line structure."},
+    {"text": "Problem statement frames what the user is trying to do and what currently blocks them, not just a restatement of 'add bookmark feature'", "passed": false, "evidence": "Opens with \"블로그에 '북마크' 기능을 추가하는 거군요\" and goes straight to requirements questions — no blocker/goal framing."},
+    {"text": "Identifies a single actor explicitly rather than inventing an unnecessary second role", "passed": false, "evidence": "Never explicitly names an actor/role at all; user is only referenced implicitly through API/DB design, not because it avoided inventing a role."},
+    {"text": "User flow is written as an ordered numbered sequence of steps, not a list of capabilities", "passed": false, "evidence": "Section 6 '구현 순서' is a numbered implementation/build sequence (migrate → API → frontend), not a user-facing flow of actor actions."},
+    {"text": "MVP cut line has at least one item placed in 'out of scope (later)' or 'explicitly not doing' rather than putting everything in v1", "passed": true, "evidence": "Recommends starting with the simplest version and defers '(선택) 북마크 수 표시, 인기순 정렬, 폴더/태그 분류' to later."},
+    {"text": "Success criteria are checkable/measurable statements, not aspirational ones", "passed": false, "evidence": "No success-criteria section exists anywhere in the response."},
+    {"text": "Touches & dependencies section names an entry point in the existing product without designing the UI in detail", "passed": false, "evidence": "Goes well past naming an entry point — full SQL DDL, REST endpoint table, and optimistic-update frontend implementation detail are given."},
+    {"text": "Does not add unnecessary complexity (e.g. multi-role permissions) for what the prompt described as a single-user feature", "passed": true, "evidence": "Stays single-actor (logged-in user), no extra roles invented."}
+  ],
+  "summary": {"passed": 2, "failed": 6, "total": 8, "pass_rate": 0.25}
+}

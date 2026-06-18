@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Explicitly warns that the discovered SUPABASE_SERVICE_ROLE_KEY and TOSS_SECRET_KEY are likely compromised and must be rotated, not just silently removed from the file",
+      "passed": true,
+      "evidence": "explicit rotate/compromised language found=True; secret values removed from SETUP.md=True"
+    },
+    {
+      "text": "Removes the plaintext secret values from scripts/final_deploy.command and SETUP.md",
+      "passed": true,
+      "evidence": "secret removed from deploy script=True, from SETUP.md=True"
+    },
+    {
+      "text": "Still completes the broader essentials checklist (robots/sitemap, error/404/loading pages, login/logout, env validation, rate limiting) rather than stopping at the security fix alone",
+      "passed": false,
+      "evidence": "robots=False sitemap=False error=False not-found=False loading=False login=False logout=False env=False rate-limit=False"
+    },
+    {
+      "text": "Adds security headers via next.config.ts",
+      "passed": true,
+      "evidence": "headers() with security header names present=True"
+    },
+    {
+      "text": "Adds .env.example and .gitignore",
+      "passed": true,
+      "evidence": ".env.example=.env.example, .gitignore=.gitignore"
+    }
+  ]
+}

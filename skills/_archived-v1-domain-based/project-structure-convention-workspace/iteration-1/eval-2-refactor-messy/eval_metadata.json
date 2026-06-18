@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "refactor-messy-components",
+  "prompt": "지금 컴포넌트가 다 components 폴더에 한꺼번에 들어있어서 정리가 안 돼 있어. 정리해줘.",
+  "assertions": [
+    "라우트 전용 컴포넌트(admin-user-row, post-card)가 각자 쓰이는 라우트 폴더 안으로 옮겨졌는가 (중앙 components/ 하위의 도메인 폴더가 아니라)",
+    "범용 UI 프리미티브(button)가 components/ui/로 이동했는가",
+    "이동한 컴포넌트를 가리키는 import 경로가 모두 갱신되어 깨진 import가 없는가"
+  ]
+}

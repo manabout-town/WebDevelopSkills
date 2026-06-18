@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "add-feature-to-existing-project",
+  "prompt": "이 프로젝트의 (authenticated)/dashboard 페이지에 게시글 작성 기능을 추가해줘. 폼을 제출하면 Server Action으로 posts 테이블에 저장되게 해줘.",
+  "assertions": [
+    "새 폼 컴포넌트를 dashboard 라우트 폴더에 colocate했는가 (조기에 components/ 하위 전용 폴더로 옮기지 않았는가)",
+    "Server Action 내부에서 인증을 재확인하는가 (auth.getUser() 호출)",
+    "기존 lib/supabase 클라이언트 구성을 그대로 재사용했는가 (새 클라이언트 파일을 따로 만들지 않았는가)",
+    "새로 추가한 파일명이 kebab-case인가"
+  ]
+}

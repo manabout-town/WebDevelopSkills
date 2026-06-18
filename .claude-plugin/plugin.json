@@ -1,0 +1,8 @@
+{
+  "name": "web-dev-skills",
+  "description": "Next.js + Supabase 웹 개발을 위한 범용 기술 스킬 모음집 (인증, DB 설계, 결제, 파일 업로드, UI, 배포 보안 등). 특정 서비스의 비즈니스 로직이 아닌 재사용 가능한 기술 패턴만 다룬다.",
+  "version": "0.1.0",
+  "author": {
+    "name": "manabout-town"
+  }
+}

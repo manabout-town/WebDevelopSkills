@@ -1,0 +1,23 @@
+{
+  "skill_name": "nextjs-supabase-auth",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "내가 만드는 중고 거래 플랫폼(판매자/구매자 두 역할)에 Next.js + Supabase로 로그인/회원가입이랑 역할별 대시보드를 만들어야 해. 구글 로그인도 지원하고 싶어.",
+      "expected_output": "역할 2개(판매자/구매자) 구조 설계, 4종 Supabase 클라이언트(client/server/middleware/service) 분리, 미들웨어 라우트 보호, 구글 OAuth용 /auth/callback 라우트, RLS 정책 예시, 회원가입->온보딩->역할분기 흐름. 화물로 특정 용어(화주/기사 등) 없이 일반화된 네이밍 사용.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "간단한 개인 블로그 SaaS를 만들고 있는데 로그인한 사용자만 글쓰기 페이지에 접근할 수 있게 미들웨어로 막고 싶어. 역할 같은 건 없고 그냥 로그인 여부만 체크하면 돼.",
+      "expected_output": "역할 0개 케이스로 단순화된 설계. 과한 역할 분기 로직 없이 로그인 여부만 체크하는 미들웨어, 4종 클라이언트 중 필요한 것만 안내. 불필요하게 복잡한 역할/온보딩 흐름을 강요하지 않음.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "기존에 이메일/비밀번호 로그인만 있던 서비스에 매직링크 로그인을 추가하고 싶어. 로그아웃이랑 비밀번호 재설정 페이지도 같이 점검해줘.",
+      "expected_output": "매직링크용 /auth/callback 라우트(exchangeCodeForSession), 서버 사이드 로그아웃 Server Action(signOut), resetPasswordForEmail 기반 비밀번호 재설정 흐름과 recovery 세션 구분 설명. 미들웨어가 갱신된 쿠키를 response에 제대로 반영하는지 확인.",
+      "files": []
+    }
+  ]
+}

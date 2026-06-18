@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "skill_name": "nextjs-supabase-auth",
+    "skill_path": "skills/nextjs-supabase-auth",
+    "executor_model": "claude-sonnet-4-6",
+    "analyzer_model": "claude-sonnet-4-6",
+    "timestamp": "2026-06-17T12:00:00Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "marketplace-oauth",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 220.0,
+        "tokens": 81724,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four separate Supabase clients (browser, server, middleware, service-role)",
+          "passed": true,
+          "evidence": "client/server/middleware/service files found: {'^client\\\\.ts$': ['lib/supabase/client.ts'], '^server\\\\.ts$': ['lib/supabase/server.ts'], '^middleware\\\\.ts$': ['middleware.ts', 'lib/supabase/middleware.ts'], '^service\\\\.ts$': ['lib/supabase/service.ts']}"
+        },
+        {
+          "text": "Auth callback route uses exchangeCodeForSession for the Google OAuth flow",
+          "passed": true,
+          "evidence": "found in: ['app/auth/callback/route.ts']"
+        },
+        {
+          "text": "Middleware returns the mutated response (cookie-sync preserved), not a fresh NextResponse",
+          "passed": true,
+          "evidence": "files with request+response cookie sync: ['lib/supabase/middleware.ts']"
+        },
+        {
+          "text": "Includes RLS policy SQL (ROW LEVEL SECURITY) for the role-scoped tables",
+          "passed": true,
+          "evidence": "found in: ['sql/schema.sql']"
+        },
+        {
+          "text": "Signup is role-agnostic; role is chosen in a separate onboarding step, not at signup",
+          "passed": true,
+          "evidence": "onboarding path exists: True; signup .ts files assigning a role value: []"
+        },
+        {
+          "text": "No 화물로-specific terms (화주, 기사) anywhere in generated code files (excluding SUMMARY.md commentary)",
+          "passed": true,
+          "evidence": "matches outside SUMMARY.md: []"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "marketplace-oauth",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8333,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 310.5,
+        "tokens": 85970,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four separate Supabase clients (browser, server, middleware, service-role)",
+          "passed": false,
+          "evidence": "client/server/middleware/service files found: {'^client\\\\.ts$': ['lib/supabase/client.ts'], '^server\\\\.ts$': ['lib/supabase/server.ts'], '^middleware\\\\.ts$': ['middleware.ts', 'lib/supabase/middleware.ts'], '^service\\\\.ts$': []}"
+        },
+        {
+          "text": "Auth callback route uses exchangeCodeForSession for the Google OAuth flow",
+          "passed": true,
+          "evidence": "found in: ['SUMMARY.md', 'app/auth/callback/route.ts']"
+        },
+        {
+          "text": "Middleware returns the mutated response (cookie-sync preserved), not a fresh NextResponse",
+          "passed": true,
+          "evidence": "files with request+response cookie sync: ['lib/supabase/middleware.ts']"
+        },
+        {
+          "text": "Includes RLS policy SQL (ROW LEVEL SECURITY) for the role-scoped tables",
+          "passed": true,
+          "evidence": "found in: ['supabase/migrations/0003_listings_example.sql', 'supabase/migrations/0001_profiles_and_roles.sql']"
+        },
+        {
+          "text": "Signup is role-agnostic; role is chosen in a separate onboarding step, not at signup",
+          "passed": true,
+          "evidence": "onboarding path exists: True; signup .ts files assigning a role value: []"
+        },
+        {
+          "text": "No 화물로-specific terms (화주, 기사) anywhere in generated code files (excluding SUMMARY.md commentary)",
+          "passed": true,
+          "evidence": "matches outside SUMMARY.md: []"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "no-role-blog",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 166.7,
+        "tokens": 75181,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Middleware checks login status only — no role/profile lookup logic",
+          "passed": true,
+          "evidence": "middleware files with 'role' mentions: []"
+        },
+        {
+          "text": "No onboarding or role-selection page is created (0-role case kept simple)",
+          "passed": true,
+          "evidence": "onboarding-related paths: []"
+        },
+        {
+          "text": "Post-creation Server Action re-validates auth server-side (defense in depth beyond middleware)",
+          "passed": true,
+          "evidence": "files re-checking auth in post action: ['lib/actions/posts.ts']"
+        },
+        {
+          "text": "RLS is enabled on the posts table",
+          "passed": true,
+          "evidence": "found in: ['supabase/migrations/0001_posts_rls.sql']"
+        },
+        {
+          "text": "Logout happens server-side via supabase.auth.signOut(), not client-only",
+          "passed": true,
+          "evidence": "found in: ['lib/actions/auth.ts']"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "no-role-blog",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 144.8,
+        "tokens": 63277,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Middleware checks login status only — no role/profile lookup logic",
+          "passed": true,
+          "evidence": "middleware files with 'role' mentions: []"
+        },
+        {
+          "text": "No onboarding or role-selection page is created (0-role case kept simple)",
+          "passed": true,
+          "evidence": "onboarding-related paths: []"
+        },
+        {
+          "text": "Post-creation Server Action re-validates auth server-side (defense in depth beyond middleware)",
+          "passed": true,
+          "evidence": "files re-checking auth in post action: ['src/app/write/actions.ts']"
+        },
+        {
+          "text": "RLS is enabled on the posts table",
+          "passed": true,
+          "evidence": "found in: ['middleware.ts']"
+        },
+        {
+          "text": "Logout happens server-side via supabase.auth.signOut(), not client-only",
+          "passed": false,
+          "evidence": "found in: []"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "magic-link-logout",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 253.1,
+        "tokens": 85260,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Auth callback route exists and uses exchangeCodeForSession",
+          "passed": true,
+          "evidence": "found in: ['app/auth/callback/route.ts']"
+        },
+        {
+          "text": "Server-side logout via signOut() inside a Server Action exists",
+          "passed": true,
+          "evidence": "found in: ['app/logout/actions.ts', 'app/update-password/actions.ts']"
+        },
+        {
+          "text": "Password reset uses resetPasswordForEmail plus a distinct update-password step gated by a valid recovery session",
+          "passed": true,
+          "evidence": "resetPasswordForEmail in: ['SUMMARY.md', 'app/reset-password/actions.ts', 'app/auth/callback/route.ts']; update-password path exists: True"
+        },
+        {
+          "text": "Middleware syncs refreshed cookies onto both request and response",
+          "passed": true,
+          "evidence": "found in: ['lib/supabase/middleware.ts']"
+        },
+        {
+          "text": "Existing email/password login is preserved alongside the new magic-link option",
+          "passed": true,
+          "evidence": "signInWithPassword in: ['SUMMARY.md', 'app/login/actions.ts']; signInWithOtp in: ['SUMMARY.md', 'app/login/actions.ts']"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "magic-link-logout",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 229.8,
+        "tokens": 72445,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Auth callback route exists and uses exchangeCodeForSession",
+          "passed": true,
+          "evidence": "found in: ['app/auth/callback/route.ts']"
+        },
+        {
+          "text": "Server-side logout via signOut() inside a Server Action exists",
+          "passed": true,
+          "evidence": "found in: ['app/logout/actions.ts']"
+        },
+        {
+          "text": "Password reset uses resetPasswordForEmail plus a distinct update-password step gated by a valid recovery session",
+          "passed": true,
+          "evidence": "resetPasswordForEmail in: ['SUMMARY.md', 'app/reset-password/actions.ts']; update-password path exists: True"
+        },
+        {
+          "text": "Middleware syncs refreshed cookies onto both request and response",
+          "passed": true,
+          "evidence": "found in: ['lib/supabase/middleware.ts']"
+        },
+        {
+          "text": "Existing email/password login is preserved alongside the new magic-link option",
+          "passed": true,
+          "evidence": "signInWithPassword in: ['SUMMARY.md', 'app/login/actions.ts', 'app/login/page.tsx']; signInWithOtp in: ['SUMMARY.md', 'app/login/actions.ts']"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 213.2667,
+        "stddev": 43.5918,
+        "min": 166.7,
+        "max": 253.1
+      },
+      "tokens": {
+        "mean": 80721.6667,
+        "stddev": 5113.7134,
+        "min": 75181,
+        "max": 85260
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8778,
+        "stddev": 0.1072,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 228.3667,
+        "stddev": 82.8593,
+        "min": 144.8,
+        "max": 310.5
+      },
+      "tokens": {
+        "mean": 73897.3333,
+        "stddev": 11415.9983,
+        "min": 63277,
+        "max": 85970
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.12",
+      "time_seconds": "-15.1",
+      "tokens": "+6824"
+    }
+  },
+  "notes": [
+    "Each eval ran once per configuration (not 3x) — single-run comparison, so stddev is 0 within an eval but pass_rate/time/token stats below are aggregated across the 3 different evals.",
+    "eval-0 without_skill: missing the dedicated service-role Supabase client (browser/server/middleware clients all present, but no service.ts) — with_skill correctly separates all four client types.",
+    "eval-1 without_skill: no logout mechanism implemented at all (no signOut call anywhere in the codebase) — with_skill includes a server-side logout Server Action.",
+    "eval-2: both configurations passed all assertions — magic-link + logout + password-reset is a well-known enough pattern that the baseline got it right without the skill.",
+    "Assertion 'Auth callback route uses exchangeCodeForSession' and 'RLS enabled' passed 100% in both configurations across applicable evals — may not strongly differentiate skill value going forward.",
+    "with_skill runs took longer and used more tokens on eval-1 only; mixed/inconclusive on time and tokens overall, but consistently equal-or-higher pass rate."
+  ]
+}

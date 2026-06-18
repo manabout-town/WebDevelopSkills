@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "라우트 그룹이 접근권한((public)/(authenticated)/(admin)) 기준으로만 존재하고, 별도 도메인 그룹(예: (auth))을 만들지 않았는가",
+      "passed": false,
+      "evidence": "app 하위 그룹: ['(admin)', '(auth)', '(dashboard)', '(public)', 'api'] / 추가 도메인 그룹 발견: ['(auth)', '(dashboard)']"
+    },
+    {
+      "text": "lib/supabase에 서비스 롤(service_role) 클라이언트 파일이 포함되어 있는가",
+      "passed": false,
+      "evidence": "service.ts 없음 — service_role 클라이언트 누락"
+    },
+    {
+      "text": "컴포넌트 파일명이 kebab-case로 일관되는가 (PascalCase 파일명 없음)",
+      "passed": false,
+      "evidence": "PascalCase 파일 발견: ['src/components/layout/SiteHeader.tsx']"
+    },
+    {
+      "text": "Server Action을 lib/actions 같은 중앙 폴더로 미리 모아두지 않고 라우트별로 분리했는가",
+      "passed": true,
+      "evidence": "중앙 actions 폴더 없음 (라우트별 분리 유지)"
+    },
+    {
+      "text": "app/, lib/, components/, types/, hooks/ 최상위 구조가 모두 존재하는가",
+      "passed": false,
+      "evidence": "{\"app\": true, \"lib\": true, \"components\": true, \"types\": true, \"hooks\": false}"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "timing": {
+    "total_tokens": 72599,
+    "duration_ms": 160641,
+    "total_duration_seconds": 160.64
+  }
+}

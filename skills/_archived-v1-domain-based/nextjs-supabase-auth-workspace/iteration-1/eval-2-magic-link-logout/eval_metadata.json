@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "magic-link-logout",
+  "prompt": "기존에 이메일/비밀번호 로그인만 있던 서비스에 매직링크 로그인을 추가하고 싶어. 로그아웃이랑 비밀번호 재설정 페이지도 같이 점검해줘.",
+  "assertions": [
+    "Auth callback route exists and uses exchangeCodeForSession",
+    "Server-side logout via signOut() inside a Server Action exists",
+    "Password reset uses resetPasswordForEmail plus a distinct update-password step gated by a valid recovery session",
+    "Middleware syncs refreshed cookies onto both request and response",
+    "Existing email/password login is preserved alongside the new magic-link option"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "eval_id": 0,
+  "eval_name": "greenfield-missing-everything",
+  "prompt": "이 Next.js + Supabase 프로젝트를 배포하기 전에 한번 점검해줘. 빠진 게 있으면 채워줘.",
+  "assertions": [
+    "Adds real page metadata (title + description) to app/layout.tsx instead of leaving it blank, with a non-placeholder description",
+    "Adds app/robots.ts and app/sitemap.ts",
+    "Adds error.tsx, not-found.tsx, and at least one loading.tsx",
+    "Adds security headers via next.config.ts headers()",
+    "Adds env var validation (e.g. lib/env.ts) for Supabase env vars",
+    "Adds rate limiting on auth actions",
+    "Adds favicon/icon and a web app manifest",
+    "Implements working login, signup, and logout via Supabase Auth Server Actions",
+    "Writes a clear SUMMARY.md explaining what was found and added"
+  ]
+}

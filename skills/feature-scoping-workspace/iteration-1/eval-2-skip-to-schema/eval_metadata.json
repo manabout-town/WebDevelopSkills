@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "skip-to-schema",
+  "prompt": "새 기능 만들어야 하는데 일단 스키마부터 설계해줘. provider가 받은 평점을 저장하는 ratings 테이블이랑 reviews 테이블 컬럼 정의해줘.",
+  "assertions": [
+    "Does not immediately produce a final column-level ratings/reviews table schema without first addressing scope",
+    "Surfaces or drafts the problem statement and user flow before or instead of jumping straight to schema",
+    "If data entities are mentioned, they are named at the 'Touches & dependencies' level (entity names only) rather than full schema with columns and types",
+    "Explicitly notes that detailed schema design belongs to a later stage (data-model-design) rather than silently doing it anyway",
+    "Produces or proposes a scope document following the skill's template structure"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "expectations": [
+    {"text": "Does not immediately produce a final column-level ratings/reviews table schema without first addressing scope", "passed": false, "evidence": "Immediately produces two full SQL DDL options (Plan A single table, Plan B split tables) with complete column lists, constraints, and indexes."},
+    {"text": "Surfaces or drafts the problem statement and user flow before or instead of jumping straight to schema", "passed": false, "evidence": "No problem statement or user flow anywhere; opens directly with schema assumptions ('가정 사항') and goes straight into DDL."},
+    {"text": "If data entities are mentioned, they are named at the 'Touches & dependencies' level (entity names only) rather than full schema with columns and types", "passed": false, "evidence": "Full column-level schema given for both ratings and reviews tables, including types, constraints, and indexes."},
+    {"text": "Explicitly notes that detailed schema design belongs to a later stage (data-model-design) rather than silently doing it anyway", "passed": false, "evidence": "No mention of any staged process — treats schema design as the entire task to be done now."},
+    {"text": "Produces or proposes a scope document following the skill's template structure", "passed": false, "evidence": "No scope document at all; output is purely a schema design memo with assumptions and clarifying questions about schema details (not feature scope)."}
+  ],
+  "summary": {"passed": 0, "failed": 5, "total": 5, "pass_rate": 0.0}
+}

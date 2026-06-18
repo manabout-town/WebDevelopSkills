@@ -1,0 +1,15 @@
+{
+  "eval_id": 0,
+  "eval_name": "single-actor-bookmark",
+  "prompt": "블로그 서비스에 사용자가 게시물을 북마크할 수 있는 기능을 추가하고 싶어. 일단 어떻게 만들면 될지 생각 좀 정리해줄래?",
+  "assertions": [
+    "Produces a written scope document, not just a conversational answer",
+    "Problem statement frames what the user is trying to do and what currently blocks them, not just a restatement of 'add bookmark feature'",
+    "Identifies a single actor explicitly rather than inventing an unnecessary second role",
+    "User flow is written as an ordered numbered sequence of steps, not a list of capabilities",
+    "MVP cut line has at least one item placed in 'out of scope (later)' or 'explicitly not doing' rather than putting everything in v1",
+    "Success criteria are checkable/measurable statements, not aspirational ones",
+    "Touches & dependencies section names an entry point in the existing product without designing the UI in detail",
+    "Does not add unnecessary complexity (e.g. multi-role permissions) for what the prompt described as a single-user feature"
+  ]
+}

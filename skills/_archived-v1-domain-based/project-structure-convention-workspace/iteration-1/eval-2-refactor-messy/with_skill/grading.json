@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "라우트 전용 컴포넌트(admin-user-row, post-card)가 각자 쓰이는 라우트 폴더 안으로 옮겨졌는가 (중앙 components/ 하위의 도메인 폴더가 아니라)",
+      "passed": true,
+      "evidence": "{\"admin-user-row.tsx\": \"app/(admin)/users/_components/admin-user-row.tsx\", \"post-card.tsx\": \"app/(authenticated)/posts/_components/post-card.tsx\"}"
+    },
+    {
+      "text": "범용 UI 프리미티브(button)가 components/ui/로 이동했는가",
+      "passed": true,
+      "evidence": "button.tsx 위치: components/ui/button.tsx"
+    },
+    {
+      "text": "이동한 컴포넌트를 가리키는 import 경로가 모두 갱신되어 깨진 import가 없는가",
+      "passed": true,
+      "evidence": "모든 import 경로 갱신됨"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_tokens": 61213,
+    "duration_ms": 62939,
+    "total_duration_seconds": 62.94
+  }
+}

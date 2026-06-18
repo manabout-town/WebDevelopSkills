@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "partial-project-audit",
+  "prompt": "프로덕션 배포 전에 이 앱이 기본적인 것들을 다 갖췄는지 확인해줘. 빠진 부분은 채워줘.",
+  "assertions": [
+    "Leaves the existing working login/signup/logout Server Actions intact (does not rewrite the core auth logic) and reports them as already present rather than redoing them",
+    "Leaves existing page metadata (title/description) intact rather than replacing it with something generic",
+    "Adds app/robots.ts and app/sitemap.ts",
+    "Adds error/404/loading pages",
+    "Adds security headers via next.config.ts",
+    "Adds env var validation",
+    "Adds favicon/manifest",
+    "SUMMARY.md clearly distinguishes already-present items from newly-added items"
+  ]
+}

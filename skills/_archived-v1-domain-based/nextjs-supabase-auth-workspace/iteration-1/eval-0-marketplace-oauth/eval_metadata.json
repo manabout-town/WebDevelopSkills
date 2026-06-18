@@ -1,0 +1,13 @@
+{
+  "eval_id": 0,
+  "eval_name": "marketplace-oauth",
+  "prompt": "내가 만드는 중고 거래 플랫폼(판매자/구매자 두 역할)에 Next.js + Supabase로 로그인/회원가입이랑 역할별 대시보드를 만들어야 해. 구글 로그인도 지원하고 싶어.",
+  "assertions": [
+    "Creates all four separate Supabase clients (browser, server, middleware, service-role)",
+    "Auth callback route uses exchangeCodeForSession for the Google OAuth flow",
+    "Middleware returns the mutated response (cookie-sync preserved), not a fresh NextResponse",
+    "Includes RLS policy SQL (ROW LEVEL SECURITY) for the role-scoped tables",
+    "Signup is role-agnostic; role is chosen in a separate onboarding step, not at signup",
+    "No 화물로-specific terms (화주, 기사) anywhere in generated files"
+  ]
+}

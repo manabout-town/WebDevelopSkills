@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "Middleware checks login status only — no role/profile lookup logic",
+      "passed": true,
+      "evidence": "middleware files with 'role' mentions: []"
+    },
+    {
+      "text": "No onboarding or role-selection page is created (0-role case kept simple)",
+      "passed": true,
+      "evidence": "onboarding-related paths: []"
+    },
+    {
+      "text": "Post-creation Server Action re-validates auth server-side (defense in depth beyond middleware)",
+      "passed": true,
+      "evidence": "files re-checking auth in post action: ['src/app/write/actions.ts']"
+    },
+    {
+      "text": "RLS is enabled on the posts table",
+      "passed": true,
+      "evidence": "found in: ['middleware.ts']"
+    },
+    {
+      "text": "Logout happens server-side via supabase.auth.signOut(), not client-only",
+      "passed": false,
+      "evidence": "found in: []"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "timing": {
+    "executor_duration_seconds": 144.8,
+    "total_duration_seconds": 144.8
+  }
+}
